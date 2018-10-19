@@ -49,19 +49,28 @@ public class Selenium_Catpaws {
             password.sendKeys(ScanPWD.next());
 //          password.click();
 //          password.sendKeys("228782");
+            Thread.sleep(2000);
             password.submit();
+            if(!"https://ssb.nwmissouri.edu/pls/PRODDAD/twbkwbis.P_ValLogin".equals(driver.getCurrentUrl())){
             WebElement student = driver.findElement(By.id("bmenu--P_StuMainMnu___UID1"));
             student.click();
             Thread.sleep(2000);
-            PrintOutput.println(!"https://ssb.nwmissouri.edu/pls/PRODDAD/twbkwbis.P_GenMenu?name=homepage".equals(driver.getCurrentUrl()));
+           
+            PrintOutput.println(true);
+            }else{
+            PrintOutput.println(false);
+            }
+            
             driver.get("https://ssb.nwmissouri.edu/pls/PRODDAD/twbkwbis.P_GenMenu?name=homepage");
-            
-            
+            clickOnLogin = driver.findElement(By.id("contentItem0"));
+            clickOnLogin.click();
+   
+        }
+     
             ScanID.close();
             ScanPWD.close();
             PrintOutput.close();
             driver.quit();
-        }
     }
 
 }
